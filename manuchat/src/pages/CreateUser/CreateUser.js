@@ -1,14 +1,20 @@
 import Button from "../../components/button/Button";
+import { ApiUser } from "../../services/API/ApiUser";
 
 const CreateUser = () =>{
 
-    const HandleCreateUser = (e) =>{
+    const HandleCreateUser = async(e) =>{
         e.preventDefault()
         const name = e.target.name.value;
         const surname = e.target.surname.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(name, surname, email, password);
+        try {
+            const res = await ApiUser.createUser(name, surname, email, password);
+            console.log(res);
+        } catch (error) {
+            console.log('no esta funcionando');
+        }
     };
     return(
         <>

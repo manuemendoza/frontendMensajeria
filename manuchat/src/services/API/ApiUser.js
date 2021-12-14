@@ -9,13 +9,29 @@ export const ApiUser = {
                     "password": password
                 })
             });
-            
             const userData = await result.json();
-            console.log(userData.token);
-            console.log(userData.userData);
             return userData;
         } catch (error) {
             console.log(error);
-        }
+        };
+    },
+
+    createUser: async (name, surname, email, password) => {
+        try {
+            let result = await fetch(`http://localhost:9525/users`,{
+                method:"POST",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    "name": name,
+                    "surname": surname,
+                    "email": email,
+                    "password": password
+                })
+            });
+            const userData = await result.json();
+            return userData;
+        } catch (error) {
+            console.log(error);
+        };
     }
 };
