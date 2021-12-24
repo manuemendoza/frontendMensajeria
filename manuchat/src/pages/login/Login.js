@@ -4,9 +4,16 @@ import { useNavigate } from 'react-router'
 
 const Login = () => {
     const navigate = useNavigate()
+    
     const redirectionToRegister = () => {
         navigate("/register");
     };
+
+    //esta hoock es para redireccionara a la pagina principal para cuando el token este verificado 
+    // const redirectionToHomeChat = () => {
+    //     navigate()
+    // };
+
     const handleSendData = async (e) =>{
         e.preventDefault()
         const email = e.target.email.value;
