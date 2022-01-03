@@ -9,10 +9,7 @@ export const ApiUser = {
                     "password": password
                 })
             });
-            
             const userData = await result.json();
-            console.log(userData.token);
-            console.log(userData.userData);
             return userData;
         } catch (error) {
             console.log(error);
