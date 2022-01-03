@@ -1,5 +1,5 @@
-import Button from "../../components/button/Button";
 import { ApiUser } from "../../services/API/ApiUser";
+import Button from "../../components/Button/Button";
 
 const CreateUser = () =>{
 
