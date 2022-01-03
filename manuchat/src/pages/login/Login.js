@@ -1,4 +1,4 @@
-import Button from "../../components/button/Button";
+import Button from "../../components/Button/Button";
 import { ApiUser } from "../../services/API/ApiUser";
 import { useNavigate } from 'react-router'
 
