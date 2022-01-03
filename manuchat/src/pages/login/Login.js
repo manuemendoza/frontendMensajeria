@@ -1,5 +1,5 @@
 import "./Login.scss"
-import Button from "../../components/button/Button";
+import Button from "../../components/Button/Button";
 import { ApiUser } from "../../services/API/ApiUser";
 import { useNavigate } from 'react-router';
 import { Link } from "react-router-dom";

@@ -32,6 +32,9 @@
     font-size: 1.7rem;
     font-weight: 500;
     }
+    input:focus{
+        outline: none;
+    }
     form div div:last-of-type input{
         margin-bottom: 0 ;
     }
