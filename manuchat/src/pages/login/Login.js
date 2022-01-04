@@ -3,8 +3,8 @@ import Button from "../../components/Button/Button";
 import { ApiUser } from "../../services/API/ApiUser";
 import { useNavigate } from 'react-router';
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import imagenLogo from '../../img/ManudChat_logo_p.png';
+import { useEffect } from "react";
+import imagenLogo from '../../img/Manuchat.png';
 
 const Login = () => {
     const token = localStorage.getItem('token');
@@ -44,7 +44,7 @@ const Login = () => {
         <>
         <div className="container">
             <img src={imagenLogo} alt="Imagen Logo" className='logo_login'/>
-            <h1 className="login_title">Iniciar Sesión</h1>
+            <h1 className="login_title">Iniciar sesión</h1>
             <form onSubmit={(e) => handleSendData(e)}> 
                 <div>
                     <div>
