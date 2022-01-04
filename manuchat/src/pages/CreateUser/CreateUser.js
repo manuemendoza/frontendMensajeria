@@ -9,15 +9,15 @@ const CreateUser = () =>{
     const token = localStorage.getItem('token');
     const navigate = useNavigate();
     
-    const redirectionToClient = () => {
+    const redirectionToChat = () => {
         navigate("/chat");
     };
     
     useEffect(()=>{
         if (token) {
-            redirectionToClient();
+            redirectionToChat();
         }
-    },[]);
+    });
     
     const HandleCreateUser = async(e) =>{
         e.preventDefault()
@@ -27,17 +27,23 @@ const CreateUser = () =>{
         const password = e.target.password.value;
         try {
             const res = await ApiUser.createUser(name, surname, email, password);
-            const token = res.token;
-            const user = res.userData;
-            localStorage.setItem('token', token);
-            localStorage.setItem('user', JSON.stringify(user));
-            if (token.length > 0) { 
-                redirectionToClient();
-            } else {   
-                console.log(null);
-            };
+            console.log('esto es una una respuesta create', res);
+            //modificando el error de estado y mensajes de estos mismos tenemos que modificar el localstorage para que no lo meta nulo tanto del login como el crate
+            // if (res) {
+            //     const login = await ApiUser.loginUser(email, password);
+            //     const token = login.token;
+            //     const user = login.userData;
+            //     localStorage.setItem('token', token);
+            //     localStorage.setItem('user', JSON.stringify(user));
+            //     if (token.length > 0) { 
+            //         redirectionToChat();
+            //     } else {   
+            //         console.log(null);
+            //     };
+            // }           
         } catch (error) {
-            console.log('no esta funcionando');
+            // console.log(error.message);
+            // console.error( error.message);
         }
     };
     return(

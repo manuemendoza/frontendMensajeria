@@ -4,21 +4,21 @@ import { ApiUser } from "../../services/API/ApiUser";
 import { useNavigate } from 'react-router';
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import imagenLogo from '../../img/Manuchat.png';
+import imagenLogo from '../../img/logodelado.png';
 
 const Login = () => {
     const token = localStorage.getItem('token');
     const navigate = useNavigate();
     
-    const redirectionToClient = () => {
+    const redirectionToChat = () => {
         navigate("/chat");
     };
     
-    useEffect(()=>{
+    useEffect(()=>{       
         if (token) {
-            redirectionToClient();
+            redirectionToChat();
         }
-    },[]);
+    });
 
     const handleSendData = async (e) =>{
         e.preventDefault();
@@ -28,15 +28,15 @@ const Login = () => {
             const res = await ApiUser.loginUser(email, password);
             const token = res.token;
             const user = res.userData;
+            console.log('wtf', res, typeof res);
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(user));
-            if (token.length > 0) { 
-                redirectionToClient();
-            } else {   
-                console.log(null);
-            };
+            if (token) { 
+                redirectionToChat();
+            }
         } catch (error) {
-            alert(error, ' no esta funcionando');
+            console.error(error);
+            console.log('este sale wtf');
         }
     };
     

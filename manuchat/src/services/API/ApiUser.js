@@ -1,39 +1,48 @@
 export const ApiUser = {
     loginUser: async (email, password) => {
-        try {
-            let result = await fetch(`http://localhost:9525/users/login`, {
-                method: "POST",
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    "email": email,
-                    "password": password
-                })
-            });
-            const userData = await result.json();
-            return userData;
-        } catch (error) {
-            console.log(error);
-        };
+        let response = await fetch(`http://localhost:9525/users/login`, {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                "email": email,
+                "password": password
+            })
+        });
+
+        const responseData = response.json();
+
+        if (!response.ok) {
+            let err = new Error(responseData.message);
+            err.code = response.status;
+            throw err;
+        }
+
+        return responseData;
     },
 
     createUser: async (name, surname, email, password) => {
-        try {
-            let result = await fetch(`http://localhost:9525/users`,{
-                method:"POST",
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    "name": name,
-                    "surname": surname,
-                    "email": email,
-                    "password": password
-                })
-            });
-            const userData = await result.json();
-            return userData;
-        } catch (error) {
-            console.log(error);
-        };
+        let response = await fetch(`http://localhost:9525/users`,{
+            method:"POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                "name": name,
+                "surname": surname,
+                "email": email,
+                "password": password
+            })
+        });
+        const responseData = await response.json();
+        console.log(responseData.code);
+        if (!response.ok) {
+            let err = new Error(responseData.message);
+            err.code = responseData.code;
+            err.status = response.status;
+            console.log(err.code);
+            throw err;
+        }
+        return responseData;
     },
+
     UpDateUser: async (id, name, surName, email, password) => {
         
         let data = {};
@@ -50,9 +59,8 @@ export const ApiUser = {
             data.password = password;
         }
 
-        let userUpDate;
         let url = `http://localhost:9525/clients/${id}`;
-        const result = await fetch(url, {
+        const response = await fetch(url, {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json',
@@ -60,8 +68,14 @@ export const ApiUser = {
             },
             body: JSON.stringify(data)
         })
-        userUpDate = await result.json();
-        console.log(userUpDate);
-        return userUpDate;
+        const responseData = response.json();
+
+        if (!response.ok) {
+            let err = new Error(responseData.message);
+            err.code = response.status;
+            throw err;
+        }
+
+        return responseData;
     }
 };
