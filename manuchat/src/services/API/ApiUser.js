@@ -32,12 +32,10 @@ export const ApiUser = {
             })
         });
         const responseData = await response.json();
-        console.log(responseData.code);
         if (!response.ok) {
             let err = new Error(responseData.message);
             err.code = responseData.code;
             err.status = response.status;
-            console.log(err.code);
             throw err;
         }
         return responseData;

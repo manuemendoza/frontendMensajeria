@@ -29,21 +29,21 @@ const CreateUser = () =>{
             const res = await ApiUser.createUser(name, surname, email, password);
             console.log('esto es una una respuesta create', res);
             //modificando el error de estado y mensajes de estos mismos tenemos que modificar el localstorage para que no lo meta nulo tanto del login como el crate
-            // if (res) {
-            //     const login = await ApiUser.loginUser(email, password);
-            //     const token = login.token;
-            //     const user = login.userData;
-            //     localStorage.setItem('token', token);
-            //     localStorage.setItem('user', JSON.stringify(user));
-            //     if (token.length > 0) { 
-            //         redirectionToChat();
-            //     } else {   
-            //         console.log(null);
-            //     };
-            // }           
+            if (res) {
+                const login = await ApiUser.loginUser(email, password);
+                const token = login.token;
+                const user = login.userData;
+                localStorage.setItem('token', token);
+                localStorage.setItem('user', JSON.stringify(user));
+                if (token.length > 0) { 
+                    redirectionToChat();
+                } else {   
+                    console.log(null);
+                };
+            }           
         } catch (error) {
-            // console.log(error.message);
-            // console.error( error.message);
+            console.log(error.code);
+            console.error( error.message);
         }
     };
     return(
