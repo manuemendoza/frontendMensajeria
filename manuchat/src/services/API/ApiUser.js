@@ -20,43 +20,49 @@ export const ApiUser = {
         return responseData;
     },
 
-    createUser: async (name, surname, email, password) => {
+    createUser: async (name, surname, username, email, password) => {
         let response = await fetch(`http://localhost:9525/users`,{
             method:"POST",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 "name": name,
                 "surname": surname,
+                "username": username,
                 "email": email,
                 "password": password
             })
         });
         const responseData = await response.json();
-        console.log(responseData.code);
+        console.log('lo que me devuelve el backend ', responseData);
         if (!response.ok) {
             let err = new Error(responseData.message);
             err.code = responseData.code;
             err.status = response.status;
-            console.log(err.code);
             throw err;
         }
         return responseData;
     },
 
-    UpDateUser: async (id, name, surName, email, password) => {
+    UpDateUser: async (id, name, surname, username, email, password, contacts) => {
         
         let data = {};
         if (name) {
             data.name = name;
         }
-        if (surName) {
-            data.surName = surName;
+        if (surname) {
+            data.surName = surname;
+        }
+        if (username) {
+            data.username = username;
         }
         if (email) {
             data.email = email;
         }
         if (password) {
             data.password = password;
+        }
+        if (contacts) {
+            data.contacts = contacts;
         }
 
         let url = `http://localhost:9525/clients/${id}`;

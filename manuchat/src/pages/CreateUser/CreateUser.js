@@ -25,25 +25,25 @@ const CreateUser = () =>{
         const surname = e.target.surname.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
+        const username = e.target.username.value;
         try {
-            const res = await ApiUser.createUser(name, surname, email, password);
-            console.log('esto es una una respuesta create', res);
+            const res = await ApiUser.createUser(name, surname, username, email, password);
             //modificando el error de estado y mensajes de estos mismos tenemos que modificar el localstorage para que no lo meta nulo tanto del login como el crate
-            // if (res) {
-            //     const login = await ApiUser.loginUser(email, password);
-            //     const token = login.token;
-            //     const user = login.userData;
-            //     localStorage.setItem('token', token);
-            //     localStorage.setItem('user', JSON.stringify(user));
-            //     if (token.length > 0) { 
-            //         redirectionToChat();
-            //     } else {   
-            //         console.log(null);
-            //     };
-            // }           
+            if (res) {
+                const login = await ApiUser.loginUser(email, password);
+                const token = login.token;
+                const user = login.userData;
+                localStorage.setItem('token', token);
+                localStorage.setItem('user', JSON.stringify(user));
+                if (token.length > 0) { 
+                    redirectionToChat();
+                } else {   
+                    console.log(null);
+                };
+            }           
         } catch (error) {
-            // console.log(error.message);
-            // console.error( error.message);
+            console.log(error.message);
+            console.error( error.message);
         }
     };
     return(
@@ -67,7 +67,16 @@ const CreateUser = () =>{
                                 <input
                                     type='text'
                                     name='surname'
-                                    placeholder="Escribe aqui tu apellido"
+                                    placeholder="Apellido"
+                                    required />
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input
+                                    type='text'
+                                    name='username'
+                                    placeholder="Nick Name"
                                     required />
                             </label>
                         </div>
@@ -76,7 +85,7 @@ const CreateUser = () =>{
                                 <input
                                     type='email'
                                     name='email'
-                                    placeholder="Escribe aqui tu email"
+                                    placeholder="Email"
                                     required />
                             </label>
                         </div>
@@ -85,7 +94,7 @@ const CreateUser = () =>{
                                 <input
                                     type='password'
                                     name='password'
-                                    placeholder="Escribe aqui tu contraseña"
+                                    placeholder="Contraseña"
                                     required />
                             </label>
                         </div>
