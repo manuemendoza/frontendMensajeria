@@ -33,7 +33,6 @@ export const ApiUser = {
             })
         });
         const responseData = await response.json();
-        console.log('lo que me devuelve el backend ', responseData);
         if (!response.ok) {
             let err = new Error(responseData.message);
             err.code = responseData.code;

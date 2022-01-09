@@ -28,14 +28,14 @@ const Login = () => {
             const res = await ApiUser.loginUser(email, password);
             const token = res.token;
             const user = res.userData;
-            console.log('wtf', res, typeof res);
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(user));
             if (token) { 
                 redirectionToChat();
             }
         } catch (error) {
-            console.error(error);
+            // aqui obtengo el 400 para mi mensaje invalid user or password
+            console.error(error.code);
             console.log('este sale wtf');
         }
     };

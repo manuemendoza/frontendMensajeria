@@ -43,6 +43,7 @@ const CreateUser = () =>{
             }           
         } catch (error) {
             console.log(error.message);
+            console.log(error.code);
             console.error( error.message);
         }
     };
