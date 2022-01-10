@@ -8,15 +8,12 @@ export const ApiUser = {
                 "password": password
             })
         });
-
         const responseData = response.json();
-
         if (!response.ok) {
             let err = new Error(responseData.message);
             err.code = response.status;
             throw err;
         }
-
         return responseData;
     },
 
@@ -49,7 +46,7 @@ export const ApiUser = {
             data.name = name;
         }
         if (surname) {
-            data.surName = surname;
+            data.surname = surname;
         }
         if (username) {
             data.username = username;
@@ -63,8 +60,7 @@ export const ApiUser = {
         if (contacts) {
             data.contacts = contacts;
         }
-
-        let url = `http://localhost:9525/clients/${id}`;
+        let url = `http://localhost:9525/users/${id}`;
         const response = await fetch(url, {
             method: "PUT",
             headers: {

@@ -11,7 +11,7 @@ const Login = () => {
     const navigate = useNavigate();
     
     const redirectionToChat = () => {
-        navigate("/chat");
+        navigate("/user/chat");
     };
     
     useEffect(()=>{       
