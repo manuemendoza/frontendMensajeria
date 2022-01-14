@@ -52,56 +52,56 @@ const CreateUser = () =>{
         <div className="container">
         <img src={imagenLogo} alt="Imagen Logo" className='logo_login'/>
         <p className="login_text">Crea una cuenta <span>ó bien<Link to="/login"> incia sesión</Link></span></p>
-            <form onSubmit={(e) => HandleCreateUser(e)} className="form">
+        <form onSubmit={(e) => HandleCreateUser(e)} className="form">
+                <div>
                     <div>
-                        <div>
-                            <label className="text">
-                                <input
-                                    type='text'
-                                    name='name'
-                                    placeholder="Nombre"
-                                    required />
-                            </label>
-                        </div>
-                        <div>
-                            <label>
-                                <input
-                                    type='text'
-                                    name='surname'
-                                    placeholder="Apellido"
-                                    required />
-                            </label>
-                        </div>
-                        <div>
-                            <label>
-                                <input
-                                    type='text'
-                                    name='username'
-                                    placeholder="Nick Name"
-                                    required />
-                            </label>
-                        </div>
-                        <div>
-                            <label>
-                                <input
-                                    type='email'
-                                    name='email'
-                                    placeholder="Email"
-                                    required />
-                            </label>
-                        </div>
-                        <div>
-                            <label>
-                                <input
-                                    type='password'
-                                    name='password'
-                                    placeholder="Contraseña"
-                                    required />
-                            </label>
-                        </div>
+                        <label className="text">
+                            <input
+                                type='text'
+                                name='name'
+                                placeholder="Nombre"
+                                required />
+                        </label>
                     </div>
-                    <Button type="onSubmit" className="login_button" >Registrarte</Button>
-            </form>
+                    <div>
+                        <label>
+                            <input
+                                type='text'
+                                name='surname'
+                                placeholder="Apellido"
+                                required />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input
+                                type='text'
+                                name='username'
+                                placeholder="Nick Name"
+                                required />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input
+                                type='email'
+                                name='email'
+                                placeholder="Email"
+                                required />
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input
+                                type='password'
+                                name='password'
+                                placeholder="Contraseña"
+                                required />
+                        </label>
+                    </div>
+                </div>
+                <Button type="onSubmit" className="login_button" >Registrarte</Button>
+        </form>
         </div>
         </>
     )

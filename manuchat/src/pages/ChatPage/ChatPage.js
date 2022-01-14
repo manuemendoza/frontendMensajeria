@@ -1,10 +1,11 @@
+import Aside from "../../components/Aside/Aside";
 import HeaderChats from "../../components/Headers/HeaderChats";
 
 const ChatPage = () => {
     return(
         <>
         <HeaderChats/>
-        <p>ESTO ES EL DASHBOARD</p>
+        <Aside/>
         </>
     )
 };
