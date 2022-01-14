@@ -4,6 +4,9 @@ const initialState =  {
     user:[],
     chat: [],
     visibility: false
+
+
+    
 };
 
 const reduce = (globalState=initialState, action) => {
