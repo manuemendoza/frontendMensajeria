@@ -7,8 +7,8 @@ import { useState } from "react";
 
 const HeaderChats = (props) => {
     const userLocal = JSON.parse(localStorage.getItem("user"));
-    const nameUser = userLocal.name.split('');
-    const surnameUser = userLocal.surname.split('');
+    const userName = userLocal.name.split('');
+    const userSurname = userLocal.surname.split('');
     const [ShowProfile, setShowProfile] = useState(false);
 
     const handledShowProfile = (e) => {
@@ -25,7 +25,7 @@ const HeaderChats = (props) => {
         <div className="container_header">
             <Search></Search>
             <div className="container_user">
-                <Button className="headerChats_user" onClick={(e)=>handledShowProfile(e)}>{nameUser[0]+surnameUser[0]}</Button>
+                <Button className="headerChats_user" onClick={(e)=>handledShowProfile(e)}>{userName[0]+userSurname[0]}</Button>
             </div>
             {ShowProfile 
             ?

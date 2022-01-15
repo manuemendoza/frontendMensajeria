@@ -10,13 +10,13 @@ const CreateUser = () =>{
     const navigate = useNavigate();
     
     const redirectionToChat = () => {
-        navigate("/user/chat");
+        navigate("/chat");
     };
     
     useEffect(()=>{
         if (token) {
             redirectionToChat();
-        }
+        } 
     });
     
     const HandleCreateUser = async(e) =>{
@@ -28,7 +28,6 @@ const CreateUser = () =>{
         const username = e.target.username.value;
         try {
             const res = await ApiUser.createUser(name, surname, username, email, password);
-            //modificando el error de estado y mensajes de estos mismos tenemos que modificar el localstorage para que no lo meta nulo tanto del login como el crate
             if (res) {
                 const login = await ApiUser.loginUser(email, password);
                 const token = login.token;
@@ -37,9 +36,7 @@ const CreateUser = () =>{
                 localStorage.setItem('user', JSON.stringify(user));
                 if (token.length > 0) { 
                     redirectionToChat();
-                } else {   
-                    console.log(null);
-                };
+                }
             }           
         } catch (error) {
             console.log(error.message);
@@ -49,7 +46,7 @@ const CreateUser = () =>{
     };
     return(
         <>
-        <div className="container">
+        <div className="container__login">
         <img src={imagenLogo} alt="Imagen Logo" className='logo_login'/>
         <p className="login_text">Crea una cuenta <span>ó bien<Link to="/login"> incia sesión</Link></span></p>
         <form onSubmit={(e) => HandleCreateUser(e)} className="form">

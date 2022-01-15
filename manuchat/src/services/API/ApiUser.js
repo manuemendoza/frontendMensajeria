@@ -81,7 +81,7 @@ export const ApiUser = {
         return responseData;
     },
     
-    getUser: async (email) => {
+    searchUser: async (email) => {
         let url = baseUrl+`?email=${email}`
         let response = await fetch(url,{
             method: "GET",
@@ -122,7 +122,7 @@ export const ApiUser = {
         }
         return responseData;
     },
-    getUsers: async (id) => {
+    getUser: async (id) => {
         let url = baseUrl+`/${id}`;
         let response = await fetch(url, {
             method: "GET",

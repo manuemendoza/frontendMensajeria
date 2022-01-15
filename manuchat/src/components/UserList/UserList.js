@@ -9,7 +9,7 @@ const UserList = () => {
     
     const handleGetUser = async (id) => {
         try {
-            let res = await ApiUser.getUsers(id);
+            let res = await ApiUser.getUser(id);
             setContacts(res.contacts);
         } catch (error) {
             console.error(error.message);

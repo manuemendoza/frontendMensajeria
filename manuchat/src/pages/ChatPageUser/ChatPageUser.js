@@ -6,7 +6,7 @@ import userIcon from '../../img/bxs-user.png';
 import plusIcon from "../../img/plus-circle-regular-24.png";
 import chatIcon from '../../img/bxs-message-rounded-dots.png';
 import store from '../../services/store/store';
-import { AddVisibility } from "../../services/action/addVisibility/AddVisibility";
+import { AddVisibility } from "../../services/actions/addVisibility/AddVisibility";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Button from "../../components/Button/Button";

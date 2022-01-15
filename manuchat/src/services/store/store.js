@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
 
 const initialState =  {
-    user:[],
+    idContact:[],
     chat: [],
     visibility: false
 
@@ -11,10 +11,10 @@ const initialState =  {
 
 const reduce = (globalState=initialState, action) => {
     switch (action.type) {
-        case "ADD_USER":
+        case "ADD_IDCONTACT":
             return{
                 ...globalState,
-                user: action.payload
+                idContact: action.payload
             }    
         case "ADD_VISIBILITY":
             return{
