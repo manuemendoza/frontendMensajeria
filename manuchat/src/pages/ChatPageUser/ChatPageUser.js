@@ -6,36 +6,36 @@ import userIcon from '../../img/bxs-user.png';
 import plusIcon from "../../img/plus-circle-regular-24.png";
 import chatIcon from '../../img/bxs-message-rounded-dots.png';
 import store from '../../services/store/store';
-import { AddVisibility } from "../../services/actions/addVisibility/AddVisibility";
+import { AddShowModal } from "../../services/actions/addShowModal/AddShowModal";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Button from "../../components/Button/Button";
 import 'bootstrap/dist/css/bootstrap.css';
 import CreateContact from "../../components/CreateContact/CreateContact";
+import DeleteContact from "../../components/DeleteContact/DeleteContact";
 
 const ChatPageUser = () => {
-    const [Card, setCard] = useState([])
+    const [IdContact, setIdContact] = useState([]);
     const [Show, setShow] = useState(false);
-    
+
     const handleModal = (e) => {
         e.preventDefault()
-        store.dispatch(AddVisibility(false));
+        store.dispatch(AddShowModal(true));
     };
 
-    useEffect(() => {
-        store.subscribe(()=>{
-            setCard(store.getState().user);
-            setShow(store.getState().visibility);
-        });
-    }, []);
+    store.subscribe(()=>{
+        setIdContact(store.getState().idContact);
+        setShow(store.getState().showCard);
+    });
+    
     return(
         <>
         <header className="header_prueba">
             <HeaderChats/>
         </header>
         <aside className="aside_prueba">
-            <Link to="/user"><img src={userIcon} alt='User Icon'/></Link>
-            <Link to="/user/chat"><img src={chatIcon} alt='Chat Icon'/></Link>
+            <Link to="#"><img src={userIcon} alt='User Icon'/></Link>
+            <Link to="/chats"><img src={chatIcon} alt='Chat Icon'/></Link>
             <UserList/>
             <Button onClick={(e) => handleModal(e)} ><img src={plusIcon} alt='Plus Icon' ></img></Button>
         </aside>
@@ -43,10 +43,11 @@ const ChatPageUser = () => {
             {Show
             ? <UserCard
             className="main_prueba--contenido"
-            contact={Card}/>
+            contact={IdContact}/>
             : <p>Esto tien que se una imagen</p>
-            }
+            } 
             <CreateContact/>
+            <DeleteContact/>
         </main>
         </>
     )

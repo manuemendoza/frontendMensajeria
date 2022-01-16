@@ -1,9 +1,11 @@
 import Search from "../Search/Search";
 import { ApiUser } from "../../services/API/ApiUser";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import store from '../../services/store/store';
 import Button from "../Button/Button";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { AddShowModal } from "../../services/actions/addShowModal/AddShowModal";
+import { AddNewContact } from "../../services/actions/addNewContact/AddNewContact"
 import 'bootstrap/dist/css/bootstrap.css';
 
 const CreateContact = () => {
@@ -14,7 +16,7 @@ const CreateContact = () => {
     
     const handleGetUser = async (email) => {
         try {
-            let res = await ApiUser.getUser(email);
+            let res = await ApiUser.searchUser(email);
             if (res.length > 0) {
                 const newContact = res[0];
                 setFound(true);
@@ -33,31 +35,40 @@ const CreateContact = () => {
     const handleAddContact = async (e) => {
         e.preventDefault();
         try {
-            await ApiUser.addContact(user.id , Contact._id)
-            setFound(false);
-            setContact([]);
+                await ApiUser.addContact(user.id , Contact._id);
+                setFound(false);
+                setContact([]);
+                setModalOpen(false);
+                store.dispatch(AddShowModal(false));
+                store.dispatch(AddNewContact(true));
         } catch (error) {
-            console.error(error.messega);
+            console.error(error.message);
+            if (error.status === 400) {
+                alert('contacto existe');
+                setFound(false);
+                setContact([]);
+            }
+            
         }
         
     };
     const handleCloseModal = (e) => {
         e.preventDefault();
-        setModalOpen(true);
-        console.log('hola funciono');
+        setModalOpen(false);
+        store.dispatch(AddShowModal(false));
     };
-    useEffect(() => {
-        store.subscribe(()=>{
-            setModalOpen(store.getState().visibility);
-        });
-    }, []);
+    
+    store.subscribe(()=>{
+        setModalOpen(store.getState().showModal);
+    });
+
     return(
         <>
         <Modal
         centered
         fullscreen="xl"
         size="xl"
-        isOpen={!ModalOpen}
+        isOpen={ModalOpen}
         toggle={(e) => handleCloseModal(e)}
         >
             <ModalHeader toggle={(e) => handleCloseModal(e)}>

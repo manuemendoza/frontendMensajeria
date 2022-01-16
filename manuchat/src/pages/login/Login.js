@@ -18,7 +18,7 @@ const Login = () => {
         if (token) {
             redirectionToChat();
         }
-    });
+    },[]);
 
     const handleSendData = async (e) =>{
         e.preventDefault();

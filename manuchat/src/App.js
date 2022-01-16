@@ -13,7 +13,7 @@ function App() {
         <Route path="/" element={<HomePage/>} exact/>
         <Route path="/login" element={<Login/>} exact/>
         <Route path="/register" element={<CreateUser/>} exact/>
-        <Route path="/chat" element={<ChatPage/>} exact/>
+        <Route path="/chats" element={<ChatPage/>} exact/>
         <Route path="/users" element={<ChatPageUser/>} exact/>
       </Routes>
     </BrowserRouter>

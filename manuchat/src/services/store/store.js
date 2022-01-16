@@ -3,8 +3,10 @@ import { createStore } from 'redux';
 const initialState =  {
     idContact:[],
     chat: [],
-    visibility: false
-
+    showModal: false,
+    showCard: false,
+    newContact: false,
+    deleteContact: false
 
     
 };
@@ -16,10 +18,25 @@ const reduce = (globalState=initialState, action) => {
                 ...globalState,
                 idContact: action.payload
             }    
-        case "ADD_VISIBILITY":
+        case "ADD_SHOWCARD":
             return{
                 ...globalState,
-                visibility: action.payload
+                showCard: action.payload
+            }    
+        case "ADD_SHOWMODAL":
+            return{
+                ...globalState,
+                showModal: action.payload
+            }    
+        case "ADD_NEWCONTACT":
+            return{
+                ...globalState,
+                newContact: action.payload
+            }    
+        case "ADD_DELETECONTACT":
+            return{
+                ...globalState,
+                deleteContact: action.payload
             }    
         default:
             return globalState ;

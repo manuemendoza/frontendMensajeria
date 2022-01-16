@@ -118,6 +118,7 @@ export const ApiUser = {
             let err = new Error(responseData.message);
             err.code = responseData.code;
             err.status = response.status;
+            err.message= response.message
             throw err;
         }
         return responseData;
@@ -137,24 +138,23 @@ export const ApiUser = {
         }
         return responseData;
     },
-    // deleteContact: async () => {
-    //     let url = baseUrl+`${id}`;
-    //     const response = await fetch(url, {
-    //         method: "PUT",
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             "Authorization": "Bearer " + localStorage.getItem('token') 
-    //         },
-    //         body: JSON.stringify(data)
-    //     })
-    //     const responseData = response.json();
+    deleteContact: async (id, contacId) => {
+        let url = baseUrl+`/${id}/contacts/${contacId}`;
+        const response = await fetch(url, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": "Bearer " + localStorage.getItem('token') 
+            },
+        })
+        const responseData = response.json();
 
-    //     if (!response.ok) {
-    //         let err = new Error(responseData.message);
-    //         err.code = response.status;
-    //         throw err;
-    //     }
+        if (!response.ok) {
+            let err = new Error(responseData.message);
+            err.code = response.status;
+            throw err;
+        }
 
-    //     return responseData;
-    // }
+        return responseData;
+    }
 };

@@ -17,7 +17,7 @@ const CreateUser = () =>{
         if (token) {
             redirectionToChat();
         } 
-    });
+    },[]);
     
     const HandleCreateUser = async(e) =>{
         e.preventDefault()
