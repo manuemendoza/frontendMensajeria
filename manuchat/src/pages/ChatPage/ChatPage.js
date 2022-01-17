@@ -35,7 +35,7 @@ const ChatPage = () => {
             <Link to="#">
                 <img src={chatIcon} alt='Chat Icon'/>
             </Link>
-            <ChatList/>
+            {/* <ChatList/> */}
             <Button onClick={(e) => handleModal(e)} ><img src={plusIcon} alt='Plus Icon' ></img></Button>
         </aside>
         <main>

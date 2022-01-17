@@ -3,12 +3,22 @@ import { ApiUser } from "../../services/API/ApiUser";
 import store from "../../services/store/store";
 import { AddDeleteContact } from '../../services/actions/addDeleteContact/AddDeleteContact';
 import Button from "../Button/Button";
+import { ApiChat } from "../../services/API/ApiChat";
+import { ApiMessage } from "../../services/API/ApiMessage";
+import { useNavigate } from 'react-router';
+
+
 
 const UserCard = (props) => {
     const { contact } = props;
-    const [Card, setCard] = useState([])
+    const user = JSON.parse(localStorage.getItem('user'));
+    const [Card, setCard] = useState([]);
     const id = contact.id;
-    
+    const navigate = useNavigate();
+
+    const redirectionToChat = () => {
+        navigate("/chats");
+    };
     const getUser = async (id) =>{
         try {
             const res = await ApiUser.getUser(id);
@@ -18,8 +28,29 @@ const UserCard = (props) => {
         }
     };
 
+    const handleCreateMessage = async (e) => {
+        e.preventDefault();
+        const title = null;
+        const adminId = user.id
+        const userIds = [id];
+        const text = null;
+        try {
+            const resChat = await ApiChat.createChat(title, adminId, userIds);
+            console.log('esto es el chart ', resChat);
+            if (resChat._id) {
+                const resMessage = await ApiMessage.createMessage(text, adminId, resChat._id);
+                console.log('este es mensaje ', resMessage);
+                if (resMessage) {
+                    redirectionToChat();
+                }
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     const handleModalDelete = (e) =>{
-        e.preventDefault()
+        e.preventDefault();
         store.dispatch(AddDeleteContact(true));
     }
 
@@ -33,7 +64,7 @@ const UserCard = (props) => {
             <h5>NickName: {Card.username}</h5>
             <p>Nombre: {Card.name} Apellido: {Card.surname}</p>
             <p>email: {Card.email}</p>
-            <Button className="btn btn-info" >Iniciar Conversacion</Button>
+            <Button className="btn btn-info" onClick={(e) => handleCreateMessage(e)} >Iniciar Conversacion</Button>
             <Button className="btn btn-danger" onClick={(e) => handleModalDelete(e)} >Borrar Contacto</Button>
         </div>
     )

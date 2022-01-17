@@ -1,17 +1,17 @@
-const baseUrl = `http://localhost:9525/chats`;
+const baseUrl = `http://localhost:9525/messages`;
 
-export const ApiChat = {
-        createChat: async (title, adminId, userIds) => {
+export const ApiMessage = {
+    createMessage: async (text, userId, chatId) => {
         let data = {};
-        if (title) {
-            data.title = title;
+        if (text) {
+            data.text = text;
         }
-        //esto hay que borrar cuando tenga la auth;
-        if (adminId) {
-            data.adminId = adminId;
+        //@TODO quitar eso y pasarlo por backen
+        if (userId) {
+            data.userId = userId;
         }
-        if (userIds) {
-            data.userIds = userIds;
+        if (chatId) {
+            data.chatId = chatId;
         }
         let response = await fetch(baseUrl,{
             method:"POST",

@@ -8,7 +8,7 @@ const Logout = () => {
     // esto es para obligar al cliente que siempre este loguado  para estar en chats
     // useEffect(() => {
     //     if (!token) {
-    //         navigate("/");
+    //         navigate("/login");
     //     }
     // })
     const hanlendDeleteToken =(r) => {

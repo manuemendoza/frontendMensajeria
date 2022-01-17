@@ -11,14 +11,14 @@ const Login = () => {
     const navigate = useNavigate();
     
     const redirectionToChat = () => {
-        navigate("/chat");
+        navigate("/chats");
     };
 
     useEffect(()=>{       
         if (token) {
             redirectionToChat();
         }
-    },[]);
+    },[token]);
 
     const handleSendData = async (e) =>{
         e.preventDefault();

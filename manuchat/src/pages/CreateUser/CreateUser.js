@@ -10,7 +10,7 @@ const CreateUser = () =>{
     const navigate = useNavigate();
     
     const redirectionToChat = () => {
-        navigate("/chat");
+        navigate("/chats");
     };
     
     useEffect(()=>{
