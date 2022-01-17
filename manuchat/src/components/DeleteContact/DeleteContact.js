@@ -1,4 +1,3 @@
-import Search from "../Search/Search";
 import { ApiUser } from "../../services/API/ApiUser";
 import { useState, useEffect } from "react";
 import Button from "../Button/Button";
@@ -49,8 +48,8 @@ const DeleteContact = () => {
     return(
         <Modal
         centered
-        fullscreen="xl"
-        size="xl"
+        fullscreen="lg"
+        size="lg"
         isOpen={ModalDeleteOpen}
         toggle={(e) => handleCloseModal(e)}
         >

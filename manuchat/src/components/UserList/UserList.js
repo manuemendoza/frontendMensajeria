@@ -15,6 +15,9 @@ const UserList = () => {
             let res = await ApiUser.getUser(id);
             setContacts(res.contacts);
         } catch (error) {
+            if (error.status === 401) {
+                localStorage.setItem('token', []);
+            }
             console.error(error.message);
         }
     };

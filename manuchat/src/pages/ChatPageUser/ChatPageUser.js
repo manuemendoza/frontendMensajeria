@@ -35,10 +35,10 @@ const ChatPageUser = () => {
     }
     //@TODO ESTO LO TENGO QUE PASAR A TODOS LOS ENDPOINT Y CAUNDO DE UN 401 BORRE EL TOKEN probar tambien cuando el token es []
     useEffect(()=>{       
-        if (!token) {
+        if (!token || token === []) {
             redirectionToLogin();
         }
-    },[token]);
+    });
     
     return(
         <>

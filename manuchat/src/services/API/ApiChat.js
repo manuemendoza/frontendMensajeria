@@ -1,14 +1,10 @@
 const baseUrl = `http://localhost:9525/chats`;
 
 export const ApiChat = {
-        createChat: async (title, adminId, userIds) => {
+        createChat: async (title,  userIds) => {
         let data = {};
         if (title) {
             data.title = title;
-        }
-        //esto hay que borrar cuando tenga la auth;
-        if (adminId) {
-            data.adminId = adminId;
         }
         if (userIds) {
             data.userIds = userIds;

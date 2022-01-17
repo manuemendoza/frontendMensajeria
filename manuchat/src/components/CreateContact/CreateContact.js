@@ -66,8 +66,8 @@ const CreateContact = () => {
         <>
         <Modal
         centered
-        fullscreen="xl"
-        size="xl"
+        fullscreen="lg"
+        size="lg"
         isOpen={ModalOpen}
         toggle={(e) => handleCloseModal(e)}
         >

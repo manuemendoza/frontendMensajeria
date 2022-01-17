@@ -1,14 +1,10 @@
 const baseUrl = `http://localhost:9525/messages`;
 
 export const ApiMessage = {
-    createMessage: async (text, userId, chatId) => {
+    createMessage: async (text, chatId) => {
         let data = {};
         if (text) {
             data.text = text;
-        }
-        //@TODO quitar eso y pasarlo por backen
-        if (userId) {
-            data.userId = userId;
         }
         if (chatId) {
             data.chatId = chatId;
