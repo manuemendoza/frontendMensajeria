@@ -21,7 +21,8 @@ const UserList = () => {
             console.error(error.message);
         }
     };
-    store.subscribe(()=>{
+
+    store.subscribe(() => {
         setNewContact(store.getState().newContact);
     });
     

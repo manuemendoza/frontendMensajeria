@@ -14,6 +14,7 @@ import Button from "../../components/Button/Button";
 import 'bootstrap/dist/css/bootstrap.css';
 import CreateContact from "../../components/CreateContact/CreateContact";
 import DeleteContact from "../../components/DeleteContact/DeleteContact";
+import { AddNewChat } from "../../services/actions/addNewChat/AddNewChat";
 
 const ChatPageUser = () => {
     const token = localStorage.getItem('token');
@@ -21,10 +22,13 @@ const ChatPageUser = () => {
     const [Show, setShow] = useState(false);
     const navigate = useNavigate();
 
-    const handleModal = (e) => {
-        e.preventDefault()
-        store.dispatch(AddShowModal(true));
+    const handleModal = () => {
+        store.dispatch(AddNewChat(false));
     };
+    
+    const handleToChats = (e) => {
+        store.dispatch(AddNewChat(false));
+    }
 
     store.subscribe(()=>{
         setIdContact(store.getState().idContact);
@@ -47,7 +51,7 @@ const ChatPageUser = () => {
         </header>
         <aside className="aside_prueba">
             <Link to="#"><img src={userIcon} alt='User Icon'/></Link>
-            <Link to="/chats"><img src={chatIcon} alt='Chat Icon'/></Link>
+            <Link to="/chats" onClick={() => handleToChats()}><img src={chatIcon} alt='Chat Icon'/></Link>
             <UserList/>
             <Button onClick={(e) => handleModal(e)} ><img src={plusIcon} alt='Plus Icon' ></img></Button>
         </aside>

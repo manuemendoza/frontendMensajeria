@@ -27,8 +27,11 @@ export const ApiChat = {
         return responseData;
     },
 
-    getChat: async (adminId) => {
-        let url = baseUrl+`/user?adminId=${adminId}`
+    getChat: async (title) => {
+        let url = baseUrl;
+        if (title) {
+            url = baseUrl+`?title=${title}`
+        }
         let response = await fetch(url,{
             method:"GET",
             headers: {
