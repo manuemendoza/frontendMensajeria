@@ -35,6 +35,9 @@ const DeleteContact = () => {
             store.dispatch(AddNewContact(true));
             
         } catch (error) {
+            if (error.status === 401) {
+                localStorage.setItem('token', []);
+            }
             console.error(error);
         }
     }

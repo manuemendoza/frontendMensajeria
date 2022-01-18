@@ -23,6 +23,9 @@ const CreateContact = () => {
                 setContact(newContact);
             }
         } catch (error) {
+            if (error.status === 401) {
+                localStorage.setItem('token', []);
+            }
             console.error(error.messega);
         }
         
@@ -43,6 +46,9 @@ const CreateContact = () => {
                 store.dispatch(AddNewContact(true));
         } catch (error) {
             console.error(error.message);
+            if (error.status === 401) {
+                localStorage.setItem('token', []);
+            }
             if (error.status === 400) {
                 alert('contacto existe');
                 setFound(false);

@@ -45,6 +45,9 @@ const UserCard = (props) => {
                 }
             }
         } catch (error) {
+            if (error.status === 401) {
+                localStorage.setItem('token', []);
+            }
             console.error(error);
         }
     };
