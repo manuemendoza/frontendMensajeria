@@ -27,7 +27,7 @@ export const ApiChat = {
         return responseData;
     },
 
-    getChat: async (title) => {
+    getChats: async (title) => {
         let url = baseUrl;
         if (title) {
             url = baseUrl+`?title=${title}`
@@ -47,5 +47,21 @@ export const ApiChat = {
             throw err;
         }
         return responseData;
-    }
+    },
+
+    getChat: async (id) => {
+        let url = baseUrl+`/${id}`;
+        let response = await fetch(url, {
+            method: "GET",
+            headers: { "Authorization": "Bearer " + localStorage.getItem('token') }
+        });
+        const responseData = await response.json();
+        if (!response.ok) {
+            let err = new Error(responseData.message);
+            err.code = responseData.code;
+            err.status = response.status;
+            throw err;
+        }
+        return responseData;
+    },
 };

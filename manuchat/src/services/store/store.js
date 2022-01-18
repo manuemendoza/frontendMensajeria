@@ -6,8 +6,9 @@ const initialState =  {
     showModal: false,
     showCard: false,
     newContact: false,
+    deleteContact: false,
+    idChat:[],
     newChat: false,
-    deleteContact: false
 
     
 };
@@ -34,15 +35,20 @@ const reduce = (globalState=initialState, action) => {
                 ...globalState,
                 newContact: action.payload
             }    
+            case "ADD_DELETECONTACT":
+                return{
+                    ...globalState,
+                    deleteContact: action.payload
+                }    
+        case "ADD_IDCHAT":
+            return{
+                ...globalState,
+                idChat: action.payload
+            }    
         case "ADD_NEWCHAT":
             return{
                 ...globalState,
                 newChat: action.payload
-            }    
-        case "ADD_DELETECONTACT":
-            return{
-                ...globalState,
-                deleteContact: action.payload
             }    
         default:
             return globalState ;

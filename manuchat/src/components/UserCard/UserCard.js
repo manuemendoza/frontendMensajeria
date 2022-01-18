@@ -31,14 +31,13 @@ const UserCard = (props) => {
     const handleCreateMessage = async (e) => {
         e.preventDefault();
         const title = null;
-        const adminId = user.id
         const userIds = [id];
         const text = null;
         try {
-            const resChat = await ApiChat.createChat(title, adminId, userIds);
+            const resChat = await ApiChat.createChat(title, userIds);
             console.log('esto es el chart ', resChat);
             if (resChat._id) {
-                const resMessage = await ApiMessage.createMessage(text, adminId, resChat._id);
+                const resMessage = await ApiMessage.createMessage(text, resChat._id);
                 console.log('este es mensaje ', resMessage);
                 if (resMessage) {
                     redirectionToChat();
@@ -63,7 +62,7 @@ const UserCard = (props) => {
 
     return(
         <div className="main_prueba--contenido">
-            <p>funciona porfavor</p>
+            <h1>Perfil del Contacto</h1>
             <h5>NickName: {Card.username}</h5>
             <p>Nombre: {Card.name} Apellido: {Card.surname}</p>
             <p>email: {Card.email}</p>

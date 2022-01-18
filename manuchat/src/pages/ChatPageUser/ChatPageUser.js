@@ -15,15 +15,17 @@ import 'bootstrap/dist/css/bootstrap.css';
 import CreateContact from "../../components/CreateContact/CreateContact";
 import DeleteContact from "../../components/DeleteContact/DeleteContact";
 import { AddNewChat } from "../../services/actions/addNewChat/AddNewChat";
+import { AddNewContact } from "../../services/actions/addNewContact/AddNewContact";
+
 
 const ChatPageUser = () => {
     const token = localStorage.getItem('token');
-    const [IdContact, setIdContact] = useState([]);
+    const [ContactId, setContactId] = useState([]);
     const [Show, setShow] = useState(false);
     const navigate = useNavigate();
 
     const handleModal = () => {
-        store.dispatch(AddNewChat(false));
+        store.dispatch(AddShowModal(true));
     };
     
     const handleToChats = (e) => {
@@ -31,7 +33,7 @@ const ChatPageUser = () => {
     }
 
     store.subscribe(()=>{
-        setIdContact(store.getState().idContact);
+        setContactId(store.getState().idContact);
         setShow(store.getState().showCard);
     });
     const redirectionToLogin = () =>{
@@ -59,7 +61,7 @@ const ChatPageUser = () => {
             {Show
             ? <UserCard
             className="main_prueba--contenido"
-            contact={IdContact}/>
+            contact={ContactId}/>
             : <p>Esto tien que se una imagen</p>
             } 
             <CreateContact/>

@@ -5,21 +5,23 @@ import Button from "../../components/Button/Button";
 import userIcon from '../../img/bxs-user.png'
 import chatIcon from '../../img/bxs-message-rounded-dots.png';
 import plusIcon from "../../img/plus-circle-regular-24.png";
-import { AddShowModal } from "../../services/actions/addShowModal/AddShowModal";
 import store from "../../services/store/store";
 import ChatList from "../../components/ChatList/ChatList";
+import 'bootstrap/dist/css/bootstrap.css';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from "reactstrap";
+import { AddShowModal } from "../../services/actions/addShowModal/AddShowModal";
+import MesageCard from "../../components/MesageCard/MesageCard";
 
 const ChatPage = () => {
-    // const [IdContact, setIdContact] = useState([]);
+    const [ChatId, setChatId] = useState([]);
     const [Show, setShow] = useState(false);
+    const [DropDown, setDropDown] = useState(false)
     
-    const handleModal = (e) => {
-        e.preventDefault()
-        store.dispatch(AddShowModal(true));
-    };
-
+    const OpenOrClose = () => {
+        setDropDown(!DropDown);
+    }
     store.subscribe(()=>{
-        // setIdContact(store.getState().idContact);
+        setChatId(store.getState().idChat);
         setShow(store.getState().showCard);
     });
 
@@ -35,12 +37,32 @@ const ChatPage = () => {
             <Link to="#">
                 <img src={chatIcon} alt='Chat Icon'/>
             </Link>
-            {/* <ChatList/> */}
-            <Button onClick={(e) => handleModal(e)} ><img src={plusIcon} alt='Plus Icon' ></img></Button>
+            <ChatList/> 
+            <div>
+            {/* <Button ><img src={plusIcon} alt='Plus Icon' ></img></Button> */}
+            <Dropdown
+                direction="up"
+                isOpen={DropDown}
+                toggle={OpenOrClose}
+            >
+                <DropdownToggle caret className="">
+                    <img src={plusIcon} alt='Plus Icon' ></img>
+                </DropdownToggle>
+                <DropdownMenu>
+                    <DropdownItem disabled>
+                        Enviar un Mensaje privado (Deshabilitado)
+                    </DropdownItem>
+                    <DropdownItem disabled>
+                        crear un grupo (Deshabilitado)
+                    </DropdownItem>
+                </DropdownMenu>
+            </Dropdown>
+            
+            </div>
         </aside>
         <main>
             {Show
-            ? <p>esto seria el chat</p>
+            ?<MesageCard/>
             : <p>esto seria una imagen</p>
             }
         </main>

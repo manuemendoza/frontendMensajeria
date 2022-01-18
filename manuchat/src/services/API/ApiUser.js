@@ -123,6 +123,7 @@ export const ApiUser = {
         }
         return responseData;
     },
+    
     getUser: async (id) => {
         let url = baseUrl+`/${id}`;
         let response = await fetch(url, {
@@ -138,6 +139,7 @@ export const ApiUser = {
         }
         return responseData;
     },
+
     deleteContact: async (id, contacId) => {
         let url = baseUrl+`/${id}/contacts/${contacId}`;
         const response = await fetch(url, {
