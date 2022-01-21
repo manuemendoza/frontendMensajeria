@@ -85,3 +85,10 @@ además también  se implementarán nuevas funciones:
 Actualizaciones de mensajes.
 Se  podrá enviar imágenes y archivos.
 
+## Autores 
+
+* **Manuel Mendoza** - *Desarrollador*  
+
+## Gratitud
+
+Queria dar las gracias al equipo de GeeksHups academy por su apoyo para la realización de este proyecto.
