@@ -16,7 +16,9 @@
     }
     .messageCard_messageSession{
         grid-row: 2 / 4;
-        height: 78vh;
+        margin-top: 5rem;
+        height: 72vh;
+        max-height: 70rem;
     }
     .messageCar_form{
         grid-row: 4 / 5;
