@@ -11,9 +11,9 @@ const Login = () => {
     const navigate = useNavigate();
     
     const redirectionToChat = () => {
-        navigate("/chat");
+        navigate("/chats");
     };
-    
+
     useEffect(()=>{       
         if (token) {
             redirectionToChat();
@@ -42,7 +42,7 @@ const Login = () => {
     
     return(
         <>
-        <div className="container">
+        <div className="container__login">
             <img src={imagenLogo} alt="Imagen Logo" className='logo_login'/>
             <h1 className="login_title">Iniciar sesión</h1>
             <form onSubmit={(e) => handleSendData(e)}> 

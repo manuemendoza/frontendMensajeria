@@ -1,7 +1,9 @@
+import "./Search.scss"
+
 const Search = (props) =>{
     return(
         <>
-        <input type="search" placeholder="busca tu mascota" onChange={props.handleSearch}/>
+        <input type="search" placeholder="Buscar" onChange={props.handleSearch} className="search" />
         </>
     )
 };

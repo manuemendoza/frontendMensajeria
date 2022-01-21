@@ -1,0 +1,56 @@
+const baseUrl = `http://localhost:9525/messages`;
+
+export const ApiMessage = {
+    createMessage: async (text, chatId) => {
+        let data = {};
+        if (text) {
+            data.text = text;
+        }
+        if (chatId) {
+            data.chatId = chatId;
+        }
+        let response = await fetch(baseUrl,{
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": "Bearer " + localStorage.getItem('token') 
+            },
+            body: JSON.stringify(data)
+        });
+        const responseData = await response.json();
+        if (!response.ok) {
+            let err = new Error(responseData.message);
+            err.code = responseData.code;
+            err.status = response.status;
+            throw err;
+        }
+        return responseData;
+    },
+
+    getAllMessages: async (chatId, text) => {
+        let url = baseUrl; 
+
+        if (chatId) {
+            url += `?chatId=${chatId}`;
+        }
+        if (text) {
+            url += (chatId ? '&' : '?') + `search=${text}`;
+        }
+
+        let response = await fetch(url,{
+            method:"GET",
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": "Bearer " + localStorage.getItem('token') 
+            },
+        });
+        const responseData = await response.json();
+        if (!response.ok) {
+            let err = new Error(responseData.message);
+            err.code = responseData.code;
+            err.status = response.status;
+            throw err;
+        }
+        return responseData;
+    }
+};

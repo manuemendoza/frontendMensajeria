@@ -1,0 +1,18 @@
+.searchItem{
+    list-style: none;
+    margin-top: 0.6rem;
+}
+.search_name{
+    font-size: 1.5rem;
+}
+.search_text{
+    font-size: 2rem;
+    font-style: italic;
+    display: flex;
+    justify-content: space-between;
+    span{
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-top: 1rem;
+    }
+}

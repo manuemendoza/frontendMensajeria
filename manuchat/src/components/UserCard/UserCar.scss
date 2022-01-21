@@ -1,0 +1,27 @@
+.user_card{
+    width: auto;
+}
+.card_title{
+    text-align: center;
+    margin-top: 6rem;
+    font-size: 6rem;
+    font-weight: bold;
+}
+.nickname{
+    margin-top: 10rem;
+}
+.text{
+    font-size: 4rem;
+    line-height: 8.5rem;
+}
+.container_button{
+    display: flex;
+    justify-content: space-around;
+    .button{
+        margin-top: 2rem;
+        padding: 2rem;
+        font-size: 2rem;
+        color: var(--blanco);
+        border-radius: 2rem;
+    }
+}
