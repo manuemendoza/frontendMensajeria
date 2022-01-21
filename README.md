@@ -32,6 +32,7 @@ En estas ruta accederiamos al login que sino yo estas registradro tienes un enla
 ### REGISTRO
 
 ![Image text](https://github.com/manuemendoza/frontendMensajeria/blob/main/imganes_README/register.JPG)
+
 En esta ruta accedriamos al resgitro de usuarios. Una vez que hayamos rellenado todos los campos al pulsar en el boton de crear, nos creara un usuario y se autologueara. Esto nos redirecciónará a la vista de Chatas 
 
 ````WWW.AQUIDEBERIAIRTUSERVER.COM/register````
