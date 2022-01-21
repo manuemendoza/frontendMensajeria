@@ -3,6 +3,11 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     background-color: var(--primario);
+    .search_container{
+        width: auto;
+        margin: 0 auto;
+        position: relative;
+    }
     .logo_header{
         max-width: 12rem;
         max-height: 6rem;

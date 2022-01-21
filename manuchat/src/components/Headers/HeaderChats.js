@@ -57,7 +57,7 @@ const HeaderChats = (props) => {
             <div className="container_button--header">
                 <img src={imagenLogo} alt="Imagen Logo" className='logo_header'/>
             </div>
-            <div>
+            <div className='search_container'>
                 <Search 
                 className="search_header" 
                 handleSearch={handleSearch}

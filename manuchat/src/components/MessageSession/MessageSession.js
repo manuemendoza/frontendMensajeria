@@ -12,30 +12,42 @@ const MessageSession =  (props) => {
     const { chat } = props;
     const [NewMessage, setNewMessage] = useState(false);
     const [Messages, setMessages] = useState([]);
+    const [IdMessage, setIdMessage] = useState(null);
     const [ScrollTo, setScrollTo] = useState(false);
     const id = chat.id;
-    const scrollElementId = '#scrollable-list';
+    const scrollElementId = '.messageCard_messageSession';
+    
+    console.log('el seteo de storagage ', IdMessage);
 
     const scrollTo = (scroll) => {
-        console.log('scroll', scroll);
         if (scroll) {
             let scrollElement = $(scrollElementId),
+                top = scrollElement[0].getBoundingClientRect().top,
+                height = scrollElement.prop("offsetHeight"),
                 scrollTop;
 
             if (typeof scroll === "string") {
-                const messageElement = $('data-message["' + scroll + '"]');
-                scrollTop = messageElement.offsetTop;
+                console.log('funciona');
+                const messageElement = $('div[data-messageid="' + scroll + '"]');
+                scrollTop = messageElement.prop("offsetTop") - top - height / 2;
             } else {
                 scrollTop = scrollElement.prop("scrollHeight");
             }
+
+            console.log('scroll', scroll, scrollTop);
 
             scrollElement.animate({
                 scrollTop: scrollTop
             }, 1000);
         }
-    };    
+    };
+    
+    if (IdMessage !== null) {
+        scrollTo(IdMessage.id);
+    } else { 
+        scrollTo(ScrollTo);
+    }
 
-    scrollTo(ScrollTo);
     
     const handleGetChat = async (id, messages) => {
         try {
@@ -56,6 +68,7 @@ const MessageSession =  (props) => {
 
     store.subscribe(()=>{
         setNewMessage(store.getState().newMessage);
+        setIdMessage(store.getState().idMessage);
     });
     
     useEffect(() => {

@@ -8,6 +8,8 @@ const MessageNotification = (props) => {
     const contactId=  message.userId._id;
     let text = message.text;
     let name = '';
+    let id = message._id;
+    let ownMessage = user.id === contactId;
 
     if (message.text) {
         if (user.id === contactId) {
@@ -21,7 +23,7 @@ const MessageNotification = (props) => {
     return(
         <div >
             {!ContactName
-            ?<div className="chat_bubble">
+            ?<div className={`chat_bubble ${ownMessage ? "own-message" : ""} `} data-messageid={id}>
                 <h5 className="chat_bubble-title">{name}</h5>
                 <p className="chat_bubble-text">{text}</p>
             </div>

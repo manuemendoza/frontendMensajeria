@@ -66,7 +66,7 @@ const MesageCard = (props) => {
                 chat={chat}
                 />
             </div>
-            <form onSubmit={(e) => handleCreateMessage(e)} className="messageCar_form">
+            <form onSubmit={(e) => handleCreateMessage(e)} className="messageCard_form">
                 <label className="form_label">
                     <input
                         type='text'

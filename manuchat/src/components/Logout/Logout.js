@@ -11,12 +11,12 @@ const Logout = () => {
         r.preventDefault();
         localStorage.setItem("token",'')
         localStorage.setItem("user",'')
-        navigate("/login");
+        navigate("/"); //login
     };
 
     // useEffect(() => {
     //     if (!token || token === []) {
-    //         navigate("/login");
+    //         navigate("/"); //login
     //     }
     // });
 

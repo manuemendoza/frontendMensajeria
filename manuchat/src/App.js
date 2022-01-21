@@ -10,8 +10,7 @@ function App() {
     <>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage/>} exact/>
-        <Route path="/login" element={<Login/>} exact/>
+        <Route path="/" element={<Login/>} exact/>
         <Route path="/register" element={<CreateUser/>} exact/>
         <Route path="/chats" element={<ChatPage/>} exact/>
         <Route path="/users" element={<ChatPageUser/>} exact/>

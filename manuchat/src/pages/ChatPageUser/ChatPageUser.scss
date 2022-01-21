@@ -1,5 +1,6 @@
 .body_container{
     height: calc(100vh - 10rem);
+    width: 100%;
     display: flex;
     background-color: var(--blanco);
     aside{
@@ -9,6 +10,8 @@
         background-color: var(--primarioOscuro);
         border: solid black .15rem;
         .aside_container-link{
+            width: rem;
+            max-height: auto;
             max-width: auto;
             display: flex;
             flex-wrap: wrap;
@@ -16,20 +19,17 @@
             border-bottom: solid black .1rem;
             .aside_link{
                 margin: 0;
-                padding: 1rem 8.5rem;
+                padding: 1rem;
                 img{
-                    width: 2.65rem;
+                    width: 2rem;
                 }
-            }
-            .aside_link:last-child{
-                border-left: solid black .1rem
             }
             .aside_link:hover{
                 background-color: var(--tercero);
             }
         }
         .aside_text{
-            font-size: 3rem;
+            font-size: 2.5rem;
             text-align: center;
             margin-top: 3rem;
             font-weight: bold;
@@ -46,28 +46,27 @@
                 background-color: var(--blanco);
                 cursor: pointer;
                 .aside_button-img{
-                    width:4rem;
+                    width: 2.6rem;
                 }
             }
         }
     }
     main{
-        width: 100vw;
+        width: 100%;
         .fondo_vacio{
             width: auto;
             display: flex;
             .main_text{
                 background-color:#EDEDED;
                 border:1.5px solid #666666;
-                padding:2rem;
-                position:relative;
+                padding:1rem;
                 width:auto;
                 min-height: 7rem;
                 max-height:12rem;
                 border-radius:1rem;
                 box-shadow:0 0 5px #888888;
                 margin: 20rem auto;
-                font-size: 5rem;
+                font-size: 3.5rem;
                 font-weight: bold;
                 color: var(--secundarioOscuro);
                 height:67vh;
@@ -82,6 +81,30 @@
                 bottom: -50px;
                 left: calc(95.5% - 2.5rem);
                 }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .body_container > aside {
+        width: 40%;
+        max-width: 40rem;
+        .aside_container-link{
+            max-width: 60rem;
+            .aside_link{                
+                padding: 1rem ;
+                // border: solid black .1rem;
+                img{
+                    width: 2.65rem;
+                }
+            }
+            .aside_text{
+                font-size: 2rem;
+                // text-align: center;
+                // margin-top: 3rem;
+                // font-weight: bold;
+                // text-decoration: underline ;
             }
         }
     }

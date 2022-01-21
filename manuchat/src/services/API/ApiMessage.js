@@ -51,7 +51,6 @@ export const ApiMessage = {
             err.status = response.status;
             throw err;
         }
-        console.log('ApiMessage:', responseData);
         return responseData;
     }
 };

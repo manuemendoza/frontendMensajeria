@@ -10,6 +10,7 @@ const initialState =  {
     deleteContact: false,
     idChat:[],
     newChat: false,
+    idMessage:[],
     newMessage:false
 
     
@@ -51,6 +52,11 @@ const reduce = (globalState=initialState, action) => {
             return{
                 ...globalState,
                 idChat: action.payload
+            }    
+        case "ADD_IDMESSAGE":
+            return{
+                ...globalState,
+                idMessage: action.payload
             }    
         case "ADD_NEWCHAT":
             return{

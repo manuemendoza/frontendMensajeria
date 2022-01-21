@@ -64,7 +64,7 @@ const ChatPageUser = () => {
                 </div>
                 <h2 className="aside_text"> # Lista de Contacto</h2>
                 <UserList/>
-                <div className="aside_container-button">
+                <div className="aside_container-button dropdown dropup">
                     <Button onClick={(e) => handleModal(e)} className="aside_button" ><img src={plusIcon} alt='Plus Icon' className="aside_button-img"></img></Button>
                 </div>
             </aside>

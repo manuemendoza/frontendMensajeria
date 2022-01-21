@@ -16,7 +16,7 @@ const NavBar = (props) =>{
     };
     
     const redirectionToLogin = () => {
-        navigate("/login");
+        navigate("/"); //login
     };
     
     const redirectionToChat = () => {

@@ -5,8 +5,7 @@
     line-height:1rem;
     margin:1rem 0;
     padding:.5rem;
-    position:relative;
-    width:30rem;
+    width:40%;
     min-height: 7rem;
     max-height: auto;
     border-radius:1rem;
@@ -23,6 +22,10 @@
         font-style: oblique;
         font-weight: 500;
         line-height: 1.5rem;
+    }
+
+    &.own-message {
+        margin-left: auto;
     }
 }
 

@@ -7,6 +7,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Alert } from "reactstrap";
 import { AddShowModal } from "../../services/actions/addShowModal/AddShowModal";
 import { AddNewContact } from "../../services/actions/addNewContact/AddNewContact"
 import 'bootstrap/dist/css/bootstrap.css';
+import "./CreateContact.scss"
 
 const CreateContact = () => {
     const [Contact, setContact] = useState([]);
@@ -91,11 +92,11 @@ const CreateContact = () => {
             <div>
                 {Found ? 
                 <div>
-                    <p>Usuario: {Contact.name}</p>
-                    <p>NickName: {Contact.username}</p>
-                    <p>Email: {Contact.email}</p>
+                    <p className="user_text">Usuario: {Contact.name}</p>
+                    <p className="user_text">NickName: {Contact.username}</p>
+                    <p className="user_text">Email: {Contact.email}</p>
                 </div>
-                : <p>Busca tu contacto por el email</p>
+                : <p className="user_text">Busca tu contacto por el email</p>
                 }
             </div>
             </ModalBody>

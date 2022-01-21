@@ -64,7 +64,7 @@ const UserCard = (props) => {
     },[id]);
 
     return(
-        <div className="container">
+        <div className="container user_card">
             <h1 className="card_title">Perfil del Contacto</h1>
             <h5 className="text nickname">NickName: <span>{Card.username}</span></h5>
             <p className="text">Nombre: {Card.name} Apellido: {Card.surname}</p>
