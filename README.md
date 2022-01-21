@@ -89,6 +89,6 @@ Se  podrá enviar imágenes y archivos.
 
 * **Manuel Mendoza** - *Desarrollador*  
 
-## Gratitud
+## Gratitud 🎁
 
 Queria dar las gracias al equipo de GeeksHups academy por su apoyo para la realización de este proyecto.
