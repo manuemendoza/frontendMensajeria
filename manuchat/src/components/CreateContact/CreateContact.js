@@ -3,7 +3,7 @@ import { ApiUser } from "../../services/API/ApiUser";
 import { useState } from "react";
 import store from '../../services/store/store';
 import Button from "../Button/Button";
-import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Modal, ModalHeader, ModalBody, ModalFooter, Alert } from "reactstrap";
 import { AddShowModal } from "../../services/actions/addShowModal/AddShowModal";
 import { AddNewContact } from "../../services/actions/addNewContact/AddNewContact"
 import 'bootstrap/dist/css/bootstrap.css';
@@ -38,12 +38,16 @@ const CreateContact = () => {
     const handleAddContact = async (e) => {
         e.preventDefault();
         try {
+            if (user.id === Contact._id) {
+                alert('No puedes agregarte a ti mismo')
+            } else {
                 await ApiUser.addContact(user.id , Contact._id);
                 setFound(false);
                 setContact([]);
                 setModalOpen(false);
                 store.dispatch(AddShowModal(false));
                 store.dispatch(AddNewContact(true));
+            }
         } catch (error) {
             console.error(error.message);
             if (error.status === 401) {

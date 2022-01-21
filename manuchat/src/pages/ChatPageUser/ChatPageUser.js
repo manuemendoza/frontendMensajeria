@@ -1,5 +1,5 @@
-import "./prueba.scss";
 import HeaderChats from "../../components/Headers/HeaderChats";
+import "./ChatPageUser.scss"
 import UserList from "../../components/UserList/UserList";
 import UserCard from "../../components/UserCard/UserCard";
 import userIcon from '../../img/bxs-user.png';
@@ -15,8 +15,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import CreateContact from "../../components/CreateContact/CreateContact";
 import DeleteContact from "../../components/DeleteContact/DeleteContact";
 import { AddNewChat } from "../../services/actions/addNewChat/AddNewChat";
-import { AddNewContact } from "../../services/actions/addNewContact/AddNewContact";
-
 
 const ChatPageUser = () => {
     const token = localStorage.getItem('token');
@@ -36,37 +34,53 @@ const ChatPageUser = () => {
         setContactId(store.getState().idContact);
         setShow(store.getState().showCard);
     });
+
     const redirectionToLogin = () =>{
         navigate("/login")
-    }
+    };
     //@TODO ESTO LO TENGO QUE PASAR A TODOS LOS ENDPOINT Y CAUNDO DE UN 401 BORRE EL TOKEN probar tambien cuando el token es []
-    useEffect(()=>{       
-        if (!token || token === []) {
+    useEffect(()=>{ 
+        const token = localStorage.getItem('token');
+        if (!token) {
             redirectionToLogin();
         }
-    });
+
+    },);
     
     return(
         <>
-        <header className="header_prueba">
+        <header className="chatHeader">
             <HeaderChats/>
         </header>
-        <aside className="aside_prueba">
-            <Link to="#"><img src={userIcon} alt='User Icon'/></Link>
-            <Link to="/chats" onClick={() => handleToChats()}><img src={chatIcon} alt='Chat Icon'/></Link>
-            <UserList/>
-            <Button onClick={(e) => handleModal(e)} ><img src={plusIcon} alt='Plus Icon' ></img></Button>
-        </aside>
-        <main className="main_prueba">
-            {Show
-            ? <UserCard
-            className="main_prueba--contenido"
-            contact={ContactId}/>
-            : <p>Esto tien que se una imagen</p>
-            } 
-            <CreateContact/>
-            <DeleteContact/>
-        </main>
+        <div className="body_container">
+            <aside className="">
+                <div className="aside_container-link">
+                    <div className="aside_link">
+                        <Link to="#" ><img src={userIcon} alt='User Icon' className="aside_img"/></Link>
+                    </div>
+                    <div className="aside_link">
+                        <Link to="/chats" onClick={() => handleToChats()} ><img src={chatIcon} alt='Chat Icon'/></Link>
+                    </div>
+                </div>
+                <h2 className="aside_text"> # Lista de Contacto</h2>
+                <UserList/>
+                <div className="aside_container-button">
+                    <Button onClick={(e) => handleModal(e)} className="aside_button" ><img src={plusIcon} alt='Plus Icon' className="aside_button-img"></img></Button>
+                </div>
+            </aside>
+            <main>
+                {Show
+                ? <UserCard
+                className="main_card"
+                contact={ContactId}/>
+                : <div className="fondo_vacio ">
+                    <p className="main_text">Pincha en uno de tus contactos</p>
+                </div>
+                } 
+                <CreateContact/>
+                <DeleteContact/>
+            </main>
+        </div>
         </>
     )
 };

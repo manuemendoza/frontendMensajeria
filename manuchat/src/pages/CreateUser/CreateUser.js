@@ -9,13 +9,13 @@ const CreateUser = () =>{
     const token = localStorage.getItem('token');
     const navigate = useNavigate();
     
-    const redirectionToChat = () => {
-        navigate("/chats");
+    const redirectionToUser = () => {
+        navigate("/users");
     };
     
     useEffect(()=>{
         if (token) {
-            redirectionToChat();
+            redirectionToUser();
         } 
     });
     
@@ -35,7 +35,7 @@ const CreateUser = () =>{
                 localStorage.setItem('token', token);
                 localStorage.setItem('user', JSON.stringify(user));
                 if (token.length > 0) { 
-                    redirectionToChat();
+                    redirectionToUser();
                 }
             }           
         } catch (error) {

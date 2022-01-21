@@ -1,3 +1,4 @@
+import "./UserList.scss"
 import { useEffect, useState } from "react";
 import { ApiUser } from "../../services/API/ApiUser";
 import store from "../../services/store/store";
@@ -32,11 +33,11 @@ const UserList = () => {
     },[NewContact, id]);
 
     return(
-        <div>
+        <div className="aside_list">
             {Contacts.map(contact => <UserListItem
                 key={contact._id}
                 contact={contact}
-                />)}
+            />)}
         </div>
     )
 };

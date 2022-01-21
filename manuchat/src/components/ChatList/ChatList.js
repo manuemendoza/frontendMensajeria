@@ -6,11 +6,10 @@ import ChatListItem from "../ChatListItem/ChatListItem";
 
 
 const ChatList = () => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    const id = user.id;
     const title = null;
     const [Chats, setChats] = useState([]);
     const [NewChats, setNewChats] = useState(false);
+    
     const handleGetChat = async (e) => {
         try {
             let res = await ApiChat.getChats(title);
@@ -30,10 +29,10 @@ const ChatList = () => {
     useEffect(() => {
         handleGetChat(title);
         store.dispatch(AddNewChat(false));
-    },[]);
+    },[NewChats]);
+    
     return(
-        <div>
-            <p>CHAT</p>
+        <div className="aside_list">
             {Chats.map(chat => <ChatListItem
                 key={chat._id}
                 chat={chat}

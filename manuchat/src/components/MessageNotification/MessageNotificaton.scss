@@ -1,0 +1,28 @@
+.chat_bubble{
+    background-color:#EDEDED;
+    border:1.5px solid #666666;
+    font-size:3rem;
+    line-height:1rem;
+    margin:1rem 0;
+    padding:.5rem;
+    position:relative;
+    width:30rem;
+    min-height: 7rem;
+    max-height: auto;
+    border-radius:1rem;
+    box-shadow:0 0 5px #888888;
+    .chat_bubble-title{
+        font-size: 1.6rem;
+        font-weight: bold;
+        margin-left: 0.5rem;
+        font-style: italic;
+    }
+    .chat_bubble-text{
+        margin-top: 1rem;
+        font-size: 1.5rem;
+        font-style: oblique;
+        font-weight: 500;
+        line-height: 1.5rem;
+    }
+}
+

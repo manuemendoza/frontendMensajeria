@@ -55,13 +55,13 @@ export const ApiUser = {
         if (email) {
             data.email = email;
         }
-        if (password) {
+        if (password !== undefined) {
             data.password = password;
         }
         if (contacts) {
             data.contacts = contacts;
         }
-        let url = baseUrl+`${id}`;
+        let url = baseUrl+`/${id}`;
         const response = await fetch(url, {
             method: "PUT",
             headers: {

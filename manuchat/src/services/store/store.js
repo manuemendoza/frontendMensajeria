@@ -1,6 +1,7 @@
 import { createStore } from 'redux';
 
 const initialState =  {
+    showModalUpDate: false,
     idContact:[],
     chat: [],
     showModal: false,
@@ -9,12 +10,18 @@ const initialState =  {
     deleteContact: false,
     idChat:[],
     newChat: false,
+    newMessage:false
 
     
 };
 
 const reduce = (globalState=initialState, action) => {
     switch (action.type) {
+        case "ADD_SHOWMODALUPDATE":
+            return{
+                ...globalState,
+                showModalUpDate: action.payload
+            }    
         case "ADD_IDCONTACT":
             return{
                 ...globalState,
@@ -49,6 +56,11 @@ const reduce = (globalState=initialState, action) => {
             return{
                 ...globalState,
                 newChat: action.payload
+            }    
+        case "ADD_NEWMESSAGE":
+            return{
+                ...globalState,
+                newMessage: action.payload
             }    
         default:
             return globalState ;

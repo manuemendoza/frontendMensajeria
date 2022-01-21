@@ -1,5 +1,5 @@
 import { ApiUser } from "../../services/API/ApiUser";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Button from "../Button/Button";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import store from "../../services/store/store";
@@ -24,8 +24,6 @@ const DeleteContact = () => {
     const handleDeleteContact = async (e) => {
         e.preventDefault();
         try {
-            console.log('usuario ', id );
-            console.log('contacto ', contactId);
             await ApiUser.deleteContact(id, contactId);
             //aqui tengo que poner un aler de que esta borrado
             setModalDeleteOpen(false);

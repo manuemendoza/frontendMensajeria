@@ -1,0 +1,14 @@
+.search{
+    width: 70rem;
+    border-radius: 1.3rem;
+    height: 3.5rem;
+    margin-top: 3.5rem;
+    min-width: 20rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+.search::placeholder{
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align:end;
+}

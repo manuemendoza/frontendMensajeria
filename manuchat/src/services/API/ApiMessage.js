@@ -27,8 +27,16 @@ export const ApiMessage = {
         return responseData;
     },
 
-    getChat: async (adminId) => {
-        let url = baseUrl+`/user?adminId=${adminId}`
+    getAllMessages: async (chatId, text) => {
+        let url = baseUrl; 
+
+        if (chatId) {
+            url += `?chatId=${chatId}`;
+        }
+        if (text) {
+            url += (chatId ? '&' : '?') + `search=${text}`;
+        }
+
         let response = await fetch(url,{
             method:"GET",
             headers: {
@@ -43,6 +51,7 @@ export const ApiMessage = {
             err.status = response.status;
             throw err;
         }
+        console.log('ApiMessage:', responseData);
         return responseData;
     }
 };

@@ -1,24 +1,27 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
-import { useEffect } from "react";
+import "./Logout.scss"
+// import { useEffect } from "react";
 
 const Logout = () => {
     const navigate = useNavigate();
     // const token = localStorage.getItem("token");
-    // esto es para obligar al cliente que siempre este loguado  para estar en chats
-    // useEffect(() => {
-    //     if (!token) {
-    //         navigate("/login");
-    //     }
-    // })
+
     const hanlendDeleteToken =(r) => {
         r.preventDefault();
-        localStorage.setItem("token",[])
-        localStorage.setItem("user",[])
-        navigate("/")
-    }
+        localStorage.setItem("token",'')
+        localStorage.setItem("user",'')
+        navigate("/login");
+    };
+
+    // useEffect(() => {
+    //     if (!token || token === []) {
+    //         navigate("/login");
+    //     }
+    // });
+
     return(
-        <Button onClick={ (r) => hanlendDeleteToken(r) }>Cerrar sesión</Button>
+        <Button onClick={ (r) => hanlendDeleteToken(r) } className="logout_button" >Cerrar sesión</Button>
     )
 };
 

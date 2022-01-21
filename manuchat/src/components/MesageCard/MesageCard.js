@@ -1,104 +1,83 @@
-import { useEffect, useState } from "react";
-import { ApiUser } from "../../services/API/ApiUser";
+import { useState, useEffect } from "react";
 import store from "../../services/store/store";
-import { AddDeleteContact } from '../../services/actions/addDeleteContact/AddDeleteContact';
-import Button from "../Button/Button";
-import { ApiChat } from "../../services/API/ApiChat";
+import { AddNewMessage } from "../../services/actions/addNewMessage/AddNewMessage";
 import { ApiMessage } from "../../services/API/ApiMessage";
-import { useNavigate } from 'react-router';
+import { ApiChat } from "../../services/API/ApiChat";
+import { ApiUser } from "../../services/API/ApiUser";
+import MessageSession from "../MessageSession/MessageSession";
+import "./MessgaCard.scss";
+import send from "../../img/send.png";
 
-const MesageCard = () => {
-    // const { chat } = props;
-    // const user = JSON.parse(localStorage.getItem('user'));
-    // const [Card, setCard] = useState([]);
-    // const id = contact.id;
-    // const navigate = useNavigate();
-
-    // const redirectionToChat = () => {
-    //     navigate("/chats");
-    // };
-    // const getUser = async (id) =>{
-    //     try {
-    //         const res = await ApiUser.getUser(id);
-    //         setCard(res);
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // };
-
+const MesageCard = (props) => {
+    const { chat } = props
+    const user = JSON.parse(localStorage.getItem('user'));
+    const [NewMessage, setNewMessage] = useState(false);
+    const [ContactName, setContactName] = useState();
+    let id = chat.id;
     const handleCreateMessage = async (e) => {
         e.preventDefault();
         let text = e.target.text.value;
-        console.log(text);
-        if (text) {
-            e.target.text.value = '';
+        let chatId = chat.id
+        setNewMessage(!NewMessage);
+        try {
+            const res = await ApiMessage.createMessage(text, chatId);
+            if (res) {
+                e.target.text.value = '';
+                store.dispatch(AddNewMessage(NewMessage));
+            }
+        } catch (error) {
+            if (error.status === 401) {
+                localStorage.setItem('token', []);
+            }
+            console.error(error.status);
         }
-
-        // const title = null;
-        // const userIds = [id];
-        // const text = null;
-        // try {
-        //     const resChat = await ApiChat.createChat(title, userIds);
-        //     console.log('esto es el chart ', resChat);
-        //     if (resChat._id) {
-        //         const resMessage = await ApiMessage.createMessage(text, resChat._id);
-        //         console.log('este es mensaje ', resMessage);
-        //         if (resMessage) {
-        //             redirectionToChat();
-        //         }
-        //     }
-        // } catch (error) {
-        //     if (error.status === 401) {
-        //         localStorage.setItem('token', []);
-        //     }
-        //     console.error(error);
-        // }
     };
 
-    const handleModalDelete = (e) =>{
-        // e.preventDefault();
-        // store.dispatch(AddDeleteContact(true));
-    }
-
-    // useEffect(() => {
-    //     getUser(id);
-    // },[id]);
+    const handleGetUser = async (id) => {
+        try {
+            let chat = await ApiChat.getChat(id);
+            
+            if (chat.userIds[0]._id !== user.id ) {
+                let res = await ApiUser.getUser(chat.userIds[0]._id);
+                setContactName(res.name);
+            }else{
+                let res = await ApiUser.getUser(chat.adminId);
+                setContactName(res.name);
+            }          
+        } catch (error) {
+            if (error.status === 401) {
+                localStorage.setItem('token', []);
+            }
+            console.error(error.message);
+        }
+    };
+    
+    useEffect(() => {
+        handleGetUser(id);
+    },[id]);
 
     return(
-        <div>
-            <div>
-                <p>aqui van a ir los mensajes</p>
+        <div className="messageCard_container">
+            <div className="messageCard_header">
+                <h2 className="header-text">{ContactName}</h2>
             </div>
-            <form onSubmit={(e) => handleCreateMessage(e)}>
-                <div>
-                    <label>
-                        <input
-                            type='text'
-                            name='text'
-                            required
-                        />
-                    </label>
-                </div>
-                <input type="submit" value="enviar"/>
+            <div className="container messageCard_messageSession">
+                <MessageSession
+                chat={chat}
+                />
+            </div>
+            <form onSubmit={(e) => handleCreateMessage(e)} className="messageCar_form">
+                <label className="form_label">
+                    <input
+                        type='text'
+                        name='text'
+                        required
+                        className="form_text"
+                    />
+                </label>
+                <button type="submit" className="form_button"><img src={send} alt='Plus Icon' className="form_button form_img"></img></button>
             </form>
         </div>
-        // <div className="main_prueba--contenido">
-        //     
-        //     <form> 
-        //         <div>
-        //             <div>
-        //                 <label>
-        //                     <input
-        //                         type='text'
-        //                         name='text'
-        //                         required
-        //                     />
-        //                 </label>
-        //             </div>
-        //         </div>
-        //         
-        //     </form>
-        // </div>
     )
 };
 

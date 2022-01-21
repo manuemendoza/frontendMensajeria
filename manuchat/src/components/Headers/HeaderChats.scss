@@ -1,0 +1,35 @@
+.container_header{
+    height: 10rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: var(--primario);
+    .logo_header{
+        max-width: 12rem;
+        max-height: 6rem;
+        margin: 2rem;   
+        margin: 1.5rem auto;
+    }
+    .container_button--header{
+        display: flex;
+        justify-content: center;
+    }
+    div .button_header{
+        padding: 1rem;
+        border-radius: 2rem;
+        height: fit-content;
+        margin-top: 2.2rem;
+        border: none;
+        cursor: pointer;
+        background-color: var(--tercero);
+        span{
+            font-size: 2rem;
+            margin: .2rem;
+            font-weight: bold;
+            font-style: italic;
+        }
+    }
+    .dropdawn_text{
+        margin-left: .6rem;
+    }
+    
+}

@@ -1,0 +1,88 @@
+.body_container{
+    height: calc(100vh - 10rem);
+    display: flex;
+    background-color: var(--blanco);
+    aside{
+        width: 40%;
+        max-width: 40rem;
+        height: 100%;
+        background-color: var(--primarioOscuro);
+        border: solid black .15rem;
+        .aside_container-link{
+            max-width: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            border-bottom: solid black .1rem;
+            .aside_link{
+                margin: 0;
+                padding: 1rem 8.5rem;
+                img{
+                    width: 2.65rem;
+                }
+            }
+            .aside_link:last-child{
+                border-left: solid black .1rem
+            }
+            .aside_link:hover{
+                background-color: var(--tercero);
+            }
+        }
+        .aside_text{
+            font-size: 3rem;
+            text-align: center;
+            margin-top: 3rem;
+            font-weight: bold;
+            text-decoration: underline ;
+        }
+        .aside_container-button{
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 3rem;
+            .aside_button{
+                border-radius: 25rem;
+                padding: 0.5rem;
+                border: none;
+                background-color: var(--blanco);
+                cursor: pointer;
+                .aside_button-img{
+                    width:4rem;
+                }
+            }
+        }
+    }
+    main{
+        width: 100vw;
+        .fondo_vacio{
+            width: auto;
+            display: flex;
+            .main_text{
+                background-color:#EDEDED;
+                border:1.5px solid #666666;
+                padding:2rem;
+                position:relative;
+                width:auto;
+                min-height: 7rem;
+                max-height:12rem;
+                border-radius:1rem;
+                box-shadow:0 0 5px #888888;
+                margin: 20rem auto;
+                font-size: 5rem;
+                font-weight: bold;
+                color: var(--secundarioOscuro);
+                height:67vh;
+                &:before{
+                border: 2.5rem solid #EDEDED;
+                border-left: .15rem solid #666666 ;
+                content: '';
+                border-left-color: transparent;
+                border-bottom-color: transparent;
+                border-right-color: transparent;
+                position: absolute;
+                bottom: -50px;
+                left: calc(95.5% - 2.5rem);
+                }
+            }
+        }
+    }
+}
