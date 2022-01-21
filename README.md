@@ -1,6 +1,9 @@
-# Frontend_ManuChat V.1
+# Frontend_ManuChat Version 1.0
 
-Este este es el Frontend de la aplicación de Chat que complementa al Backend realizado previamente (https://github.com/manuemendoza/backendMensajeria).
+El proyecto consiste en el diseño e implementación de una aplicación web de mensajería open source, ManuChat, que tiene la intención de poderse utilizar ya sea para ámbito privado como para empresa. 
+
+Este  es el Frontend de la aplicación de Chat que complementa al Backend realizado previamente (https://github.com/manuemendoza/backendMensajeria).
+
 ## Comenzando 🚀
 
 Este Frontend está basado en React como librería principal de JavaScript. Además se ha implementado la herramienta Redux para la gestión del estado.También se ha usado Sass como preprocesador de CSS.
@@ -56,3 +59,29 @@ se despegara actualizar tu perfil de usuario
 
 
 ````WWW.AQUIDEBERIAIRTUSERVER.COM/users````
+
+## Vesiones de la aplicación
+
+Actualmente la aplicacion se encuantra en la la version 1.0
+
+En esta versión la aplicación los usuarios podrán realizar la siguientes funciones:
+
+Hacer un CRUD de usuario completo (Crear, Modificar, Obtener sus datos, eliminar sus datos).
+añadir contactos(también eliminarlos).
+enviar mensajes a sus contactos.
+búsqueda de sus mensajes.
+
+En esta versión el mecanismo de escucha es mediante polling.
+### versión  2.0
+
+En esta versión se implementará las notificaciones a tiempo real usando la tecnología WebSocket. Además También se implementará la creación de grupos y administrarlo 
+
+WebSocket
+Creación de grupos (modificación de grupos)
+
+### versión 3.0
+además también  se implementarán nuevas funciones:
+
+Actualizaciones de mensajes.
+Se  podrá enviar imágenes y archivos.
+
