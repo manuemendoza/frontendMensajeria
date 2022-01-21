@@ -36,6 +36,9 @@ const Login = () => {
         } catch (error) {
             // aqui obtengo el 400 para mi mensaje invalid user or password
             console.error(error.code);
+            if (error.code === 400) {
+                alert('usuario o contraseña incorrecta');
+            }
             console.log('este sale wtf');
         }
     };
